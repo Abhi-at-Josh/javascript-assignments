@@ -17,3 +17,4 @@ switch(true)     {
     default:
       console.log("Adult")
   } 
+  //Output : Adult

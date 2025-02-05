@@ -18,3 +18,5 @@ else if (age >= 13 && age <=18){
 else{
     console.log("Adult")
 }
+
+// Outhput: Adult

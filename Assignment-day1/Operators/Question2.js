@@ -3,7 +3,7 @@
 
 // 1. Accessing an Index Beyond the String Length:
 let str = "Hello";
-console.log(str[10]); // Outputs: ""
+console.log(str[10]); // Outputs: undefined
 
 // 2. Accessing a Negative Index:
 let str1 = "Hello";

@@ -12,3 +12,8 @@ function processNumbers() {
 }
 
 console.log(processNumbers());
+
+// Output:
+          // The number is 0
+          // The number is 1
+          // The number is 2

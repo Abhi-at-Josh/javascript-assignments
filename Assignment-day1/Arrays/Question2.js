@@ -58,9 +58,6 @@ console.log('After map - original:', originalArray);
 console.log('After map - new:', mappedArray);        
 // Output: [2, 4, 6]
 
-
-
-
 // output
 // After push: [ 1, 2, 3, 4 ]
 // After pop: [ 1, 2 ]

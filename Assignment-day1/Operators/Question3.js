@@ -17,8 +17,3 @@ console.log(JSON.stringify('hello')); // Output: '"hello"'
 console.log(JSON.stringify(false)); // Output: 'false'
 console.log(JSON.stringify(null)); // Output: 'null'
 
-
-
-
-
-
