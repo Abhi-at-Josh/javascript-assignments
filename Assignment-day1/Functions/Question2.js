@@ -21,27 +21,18 @@ function test(callback)
   {
     callback();
   }
-  
 function callbackFunc() 
   {
     console.log("Calling the callback function");
     return 5;
   }
-  
 console.log(test(callbackFunc)); 
  
-
-
 //     ○ test(() => callbackFunc()
-function test(callback) {
-    callback();
-  }
+console.log(test(() => callbackFunc())); 
   
-  function callbackFunc() {
-    console.log("Calling the callback function");
-    return 5;
-  }
-  console.log(test(() => callbackFunc())); 
-  
-
-  
+// Output:
+// Calling the callback function
+// undefined
+// Calling the callback function
+// undefined

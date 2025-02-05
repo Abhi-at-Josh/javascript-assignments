@@ -14,5 +14,6 @@ function findFirstEvenNumber(numbers) {
     return null; // Returns null if no even number is found
   }
   
-  console.log(findFirstEvenNumber([1, 3, 5, 6, 7])); // Outputs: 6
+  console.log(findFirstEvenNumber([1, 3, 5, 6, 7]));
+   // Outputs: 6
   
