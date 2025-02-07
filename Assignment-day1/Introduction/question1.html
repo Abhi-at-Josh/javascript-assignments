@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>html js practise</title>  
+        <script src="script.js"></script>
+
+    </head>
+    <script src="script.js"></script>
+    <body>
+        <h1 id="test">Hello Word!</h1>
+        <script src="script.js"></script>
+        <p>
+            Given the above html, find out what happens when you try to access the element h1 
+            in javascript (using document.getElementById) and change its content to 
+            “Goodbye World” when the script is attached: 
+            <h3>● In the head tag</h3> 
+             <p>
+                -At this point, the browser processes the "head" section before rendering the "body". 
+                Since the "h1" element with id="test" is in the "body", it hasn't been loaded when the script runs.
+                Therefore, document.getElementById("test") returns null, and attempting to set textContent will result in an error.
+            </p>
+            <h3> ● At the start of the body tag </h3> 
+            <p>
+                 In this scenario, the script executes immediately as the browser parses the "body" section. 
+                 However, since the "h1" element is defined after the "script" tag, 
+                 it hasn't been loaded into the DOM when the script runs. Consequently, document.getElementById("test")
+                  returns null, and attempting to set textContent will result in an error.
+            </p>
+            <h3>● At the end of the body tag </h3>
+            <p>
+                Here, the browser has already parsed and loaded all the elements within the "body", including the "h1"
+                 element, by the time it encounters the "script" tag.
+                  Therefore, document.getElementById("test") successfully retrieves the "h1" element,
+                   and its textContent is updated to "Goodbye World!" as intended.
+            </p>
+        </p>
+    </body>
+</html>
+
