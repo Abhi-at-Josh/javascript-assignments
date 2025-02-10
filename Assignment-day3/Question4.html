@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            cursor: pointer;
+        }
+        #userTable {
+            display: none;
+        }
+        .search-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Users List</h2>
+    
+    <div class="search-container">
+        <label for="search">Search: </label>
+        <input type="text" id="search" placeholder="Search by name...">
+        <button id="sortButton">Sort by Name</button>
+    </div>
+
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="userTableBody"></tbody>
+    </table>
+
+    <script>
+        let users = [];
+
+        // Fetch users from the mock API
+        async function fetchUsers() {
+            try {
+                const response = await fetch('https://reqres.in/api/users'); 
+                const data = await response.json();
+                users = data.data; 
+                console.log("Fetched Users:", users);
+                displayUsers(users);
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            } finally {
+                document.getElementById('userTable').style.display = 'table'; 
+            }
+        }
+
+   
+        function displayUsers(userList) {
+            const tableBody = document.getElementById('userTableBody');
+            tableBody.innerHTML = ''; 
+            if (userList.length === 0) {
+                tableBody.innerHTML = "<tr><td colspan='3'>No users found</td></tr>";
+                return;
+            }
+
+            userList.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.first_name} ${user.last_name}</td>
+                    <td>${user.email}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        document.getElementById('sortButton').addEventListener('click', function() {
+            users.sort((a, b) => {
+                const nameA = `${a.first_name} ${a.last_name}`.toLowerCase();
+                const nameB = `${b.first_name} ${b.last_name}`.toLowerCase();
+                return nameA.localeCompare(nameB);
+            });
+            displayUsers(users); 
+        });
+
+        
+        document.getElementById('search').addEventListener('input', function(event) {
+            const searchQuery = event.target.value.toLowerCase();
+            const filteredUsers = users.filter(user => {
+                const fullName = `${user.first_name} ${user.last_name}`.toLowerCase();
+                return fullName.includes(searchQuery);
+            });
+            displayUsers(filteredUsers); 
+        });
+
+        window.onload = function() {
+            fetchUsers();
+        };
+    </script>
+
+</body>
+</html>
+<!-- Output:--
+ image::Question4.png    -->
